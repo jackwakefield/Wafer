@@ -1,0 +1,14 @@
+﻿{
+    "AppName": {
+        "$type": "String",
+        "value": "Parchment"
+    },
+    "StatusBarSomething": {
+        "$type": "Integer",
+        "value": 32
+    },
+    "StatusBarHeight": {
+        "$type": "Dimension",
+        "value": "32dp"
+    }
+}

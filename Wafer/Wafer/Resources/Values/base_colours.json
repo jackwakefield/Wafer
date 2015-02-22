@@ -1,0 +1,10 @@
+﻿{
+    "White": {
+        "$type": "Colour",
+        "value": "#FFFFFFFF"
+    },
+    "Black": {
+        "$type": "Colour",
+        "value": "#FF000000"
+    }
+}

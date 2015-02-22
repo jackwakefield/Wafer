@@ -1,0 +1,13 @@
+﻿{
+    "$type": "ContainerView",
+    "backgroundColour": "@Colour/StatusBarBackground",
+    "fillHorizontal": true,
+    "height": "@Dimension/StatusBarHeight",
+    "children": [
+        {
+            "$type": "ClockView",
+            "centerVertical": true,
+            "centerHorizontal": true
+        }
+    ]
+}

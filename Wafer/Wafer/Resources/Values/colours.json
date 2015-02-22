@@ -1,0 +1,6 @@
+﻿{
+    "StatusBarBackground": {
+        "$type": "Colour",
+        "value":  "@Colour/Black"
+    }
+}

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{38ED6811-0658-41F4-8208-CC7D3238133D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Wafer</RootNamespace>
+    <AssemblyName>Wafer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Application.cs" />
+    <Compile Include="Wafer.cs" />
+    <Compile Include="IApplication.cs" />
+    <Compile Include="WaferInstaller.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wafer.Core\Wafer.Core.csproj">
+      <Project>{3802f1b7-9d19-4284-ade1-115b1e1282a8}</Project>
+      <Name>Wafer.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wafer.StatusBar\Wafer.StatusBar.csproj">
+      <Project>{2352f8d1-e011-4713-97f6-fdcad7d9c17e}</Project>
+      <Name>Wafer.StatusBar</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wafer.UI.Direct2D\Wafer.UI.Direct2D.csproj">
+      <Project>{a0b7a810-0e35-4f9a-9cd4-e5d7710c632d}</Project>
+      <Name>Wafer.UI.Direct2D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wafer.UI\Wafer.UI.csproj">
+      <Project>{454A610C-6B55-4B3D-A15C-97F31344FD6C}</Project>
+      <Name>Wafer.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wafer.Utils\Wafer.Utils.csproj">
+      <Project>{40329280-AC36-482D-BBF6-A63A59EB87C6}</Project>
+      <Name>Wafer.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Values\base_colours.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Values\colours.json">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Layouts\status_bar.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Values\dimensions.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+</Project>

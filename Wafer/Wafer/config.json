@@ -1,0 +1,7 @@
+﻿{
+    "paths": {
+        "resources": "Resources\\",
+        "values": "Resources\\Values\\",
+		"layouts": "Resources\\Layouts\\"
+    }
+}
