@@ -55,7 +55,6 @@
     <Compile Include="IHostWindow.cs" />
     <Compile Include="IShapeRenderer.cs" />
     <Compile Include="ITextRenderer.cs" />
-    <Compile Include="MainWindow.cs" />
     <Compile Include="Views\ViewHelper.cs" />
     <Compile Include="Views\ContainerView.cs" />
     <Compile Include="Views\IContainer.cs" />
