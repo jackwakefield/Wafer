@@ -62,7 +62,6 @@ namespace Wafer.UI.Direct2D {
 
             Utilities.Dispose(ref bitmapDecoder);
             Utilities.Dispose(ref fileStream);
-            Utilities.Dispose(ref imagingFactory);
 
             return bitmap;
         }
