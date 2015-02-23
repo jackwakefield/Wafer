@@ -14,7 +14,7 @@ namespace Wafer.UI.Direct2D {
             this.renderTargetProvider = renderTargetProvider;
         }
 
-        public void Draw(IImage source, int x, int y, int width, int height) {
+        public void Draw(IImage source, float x, float y, float width, float height) {
             var image = source as Image;
             var renderTarget = renderTargetProvider.RenderTarget;
 

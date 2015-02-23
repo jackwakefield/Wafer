@@ -2,6 +2,6 @@
 
 namespace Wafer.UI {
     public interface IShapeRenderer {
-        void FillRectangle(int x, int y, int width, int height, Colour colour);
+        void FillRectangle(float x, float y, float width, float height, Colour colour);
     }
 }

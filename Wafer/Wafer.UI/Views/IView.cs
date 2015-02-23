@@ -5,9 +5,9 @@ namespace Wafer.UI.Views {
     public interface IView {
         IView Parent { get; set; }
 
-        int ActualWidth { get; }
+        float ActualWidth { get; }
 
-        int ActualHeight { get; }
+        float ActualHeight { get; }
 
         Point ActualPosition { get; }
 

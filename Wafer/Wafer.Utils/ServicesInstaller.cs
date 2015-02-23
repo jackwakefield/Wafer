@@ -2,6 +2,7 @@
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Wafer.Utils.Config;
+using Wafer.Utils.Display;
 using Wafer.Utils.Logging;
 using Wafer.Utils.Resources;
 
@@ -11,7 +12,8 @@ namespace Wafer.Utils {
             container.Register(
                 Component.For<ILogService>().ImplementedBy<LogService>().LifestyleSingleton(),
                 Component.For<IConfigService>().ImplementedBy<ConfigService>().LifestyleSingleton(),
-                Component.For<IResourceService>().ImplementedBy<ResourceService>().LifestyleSingleton()
+                Component.For<IResourceService>().ImplementedBy<ResourceService>().LifestyleSingleton(),
+                Component.For<IDisplayService>().ImplementedBy<DisplayService>().LifestyleSingleton()
             );
         }
     }

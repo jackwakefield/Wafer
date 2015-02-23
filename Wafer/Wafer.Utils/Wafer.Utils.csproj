@@ -46,6 +46,8 @@
     <Compile Include="Config\ConfigPaths.cs" />
     <Compile Include="Config\ConfigService.cs" />
     <Compile Include="Config\IConfigService.cs" />
+    <Compile Include="Display\DisplayService.cs" />
+    <Compile Include="Display\IDisplayService.cs" />
     <Compile Include="Logging\Listeners\ConsoleLogListener.cs" />
     <Compile Include="Native\Kernel32.cs" />
     <Compile Include="Native\User32.cs" />

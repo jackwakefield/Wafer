@@ -16,7 +16,7 @@ namespace Wafer.UI.Direct2D.Factories {
             this.directWriteFactoryProvider = directWriteFactoryProvider;
         }
 
-        public TextLayout CreateTextLayout(TextFormat format, string text, int maximumWidth, int maximumHeight) {
+        public TextLayout CreateTextLayout(TextFormat format, string text, float maximumWidth, float maximumHeight) {
             var directWriteFactory = directWriteFactoryProvider.DirectWriteFactory;
 
             if (directWriteFactory == null || directWriteFactory.IsDisposed) {
@@ -24,7 +24,7 @@ namespace Wafer.UI.Direct2D.Factories {
                 return null;
             }
 
-            // TODO: caching
+            // TODO: caching    
 
             return new TextLayout(directWriteFactory, text, format, maximumWidth, maximumHeight);
         }

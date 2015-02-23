@@ -17,7 +17,7 @@ namespace Wafer.UI.Direct2D {
             this.colourFactory = colourFactory;
         }
 
-        public void FillRectangle(int x, int y, int width, int height, Colour colour) {
+        public void FillRectangle(float x, float y, float width, float height, Colour colour) {
             var renderTarget = renderTargetProvider.RenderTarget;
 
             if (renderTarget != null && !renderTarget.IsDisposed) {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using Castle.Core.Internal;
 using Wafer.UI.Direct2D.Factories;
 using Wafer.UI.Views;
 using SharpDX;
+using Wafer.Utils.Display;
 using Wafer.Utils.Resources;
 using Direct2D1 = SharpDX.Direct2D1;
 using DirectWrite = SharpDX.DirectWrite;
@@ -15,6 +17,7 @@ using Direct3D = SharpDX.Direct3D10;
 using DXGI = SharpDX.DXGI;
 using SharpDX.Windows;
 using SharpDX.WIC;
+using Color = SharpDX.Color;
 
 namespace Wafer.UI.Direct2D
 {
@@ -26,11 +29,11 @@ namespace Wafer.UI.Direct2D
             }
         }
 
-        public int ActualWidth {
+        public float ActualWidth {
             get { return Width; }
         }
 
-        public int ActualHeight {
+        public float ActualHeight {
             get { return Height; }
         }
 
@@ -70,6 +73,8 @@ namespace Wafer.UI.Direct2D
         public IImageLoader ImageLoader { get; set; }
 
         public IResourceService Resources { get; set; }
+
+        public IDisplayService Display { get; set; }
 
         private readonly IList<IView> children;
         private bool isResizing;

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Wafer.Core {
     public class Point {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public float X { get; set; }
+        public float Y { get; set; }
 
         public Point() {
         }
 
-        public Point(int x, int y) {
+        public Point(float x, float y) {
             X = x;
             Y = y;
         }

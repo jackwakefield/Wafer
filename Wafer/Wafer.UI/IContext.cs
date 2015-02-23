@@ -1,4 +1,5 @@
-﻿using Wafer.Utils.Resources;
+﻿using Wafer.Utils.Display;
+using Wafer.Utils.Resources;
 
 namespace Wafer.UI {
     public interface IContext {
@@ -11,5 +12,7 @@ namespace Wafer.UI {
         IImageLoader ImageLoader { get; }
 
         IResourceService Resources { get; }
+
+        IDisplayService Display { get; }
     }
 }

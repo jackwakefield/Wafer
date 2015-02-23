@@ -6,10 +6,10 @@ using Point = Wafer.Core.Point;
 namespace Wafer.UI.Views {
     public abstract class View : IView {
         [JsonIgnore]
-        public int ActualWidth { get; protected set; }
+        public float ActualWidth { get; protected set; }
 
         [JsonIgnore]
-        public int ActualHeight { get; protected set; }
+        public float ActualHeight { get; protected set; }
 
         [JsonIgnore]
         public Point ActualPosition { get; protected set; }
@@ -103,10 +103,18 @@ namespace Wafer.UI.Views {
         }
 
         public virtual void InvalidateSize() {
+            if (context == null) {
+                return;
+            }
+
             if (Parent != null && FillVertical) {
                 ActualHeight = Parent.ActualHeight;
             } else if (Height != null) {
-                ActualHeight = Height.Value; // TODO: Calculate DP dimension
+                ActualHeight = Height.Value;
+
+                if (Height.Unit == DimensionUnit.DensityIndependentPixels) {
+                    ActualHeight = context.Display.CalculatePixelsPerInch(ActualHeight);
+                }
             } else {
                 ActualHeight = 0;
             }
@@ -114,7 +122,11 @@ namespace Wafer.UI.Views {
             if (Parent != null && FillHorizontal) {
                 ActualWidth = Parent.ActualWidth;
             } else if (Width != null) {
-                ActualWidth = Width.Value; // TODO: Calculate DP dimension
+                ActualWidth = Width.Value;
+
+                if (Width.Unit == DimensionUnit.DensityIndependentPixels) {
+                    ActualWidth = context.Display.CalculatePixelsPerInch(ActualWidth);
+                }
             } else {
                 ActualWidth = 0;
             }

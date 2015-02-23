@@ -12,7 +12,8 @@
         {
             "$type": "ImageView",
             "imageSource": "Icons/battery_unknown_white.png",
-            "Height": "18dp"
+            "Height": "16dp",
+            "centerVertical": true
         }
     ]
 }

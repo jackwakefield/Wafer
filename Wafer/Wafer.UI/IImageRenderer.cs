@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace Wafer.UI {
     public interface IImageRenderer {
-        void Draw(IImage image, int x, int y, int width, int height);
+        void Draw(IImage image, float x, float y, float width, float height);
     }
 }

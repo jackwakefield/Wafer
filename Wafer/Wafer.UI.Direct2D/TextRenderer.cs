@@ -22,12 +22,12 @@ namespace Wafer.UI.Direct2D {
             this.textLayoutFactory = textLayoutFactory;
         }
 
-        public void Draw(string text, int x, int y, int maximumWidth, int maximumHeight,
-            string fontFamily, Dimension fontSize, Colour colour) {
+        public void Draw(string text, float x, float y, float maximumWidth, float maximumHeight,
+            string fontFamily, float fontSize, Colour colour) {
             var renderTarget = renderTargetProvider.RenderTarget;
 
             if (renderTarget != null && !renderTarget.IsDisposed) {
-                var textFormat = textFormatFactory.CreateTextFormat(fontFamily, fontSize.Value);
+                var textFormat = textFormatFactory.CreateTextFormat(fontFamily, fontSize);
                 var textLayout = textLayoutFactory.CreateTextLayout(textFormat, text, maximumWidth, maximumHeight);
                 var brush = colourFactory.CreateSolidColourBrush(colour);
 
@@ -37,16 +37,16 @@ namespace Wafer.UI.Direct2D {
             }
         }
 
-        public int MeasureWidth(string text, int maximumWidth, int maximumHeight, string fontFamily, Dimension fontSize) {
+        public int MeasureWidth(string text, float maximumWidth, float maximumHeight, string fontFamily, float fontSize) {
             return Measure(text, maximumWidth, maximumHeight, fontFamily, fontSize).Width;
         }
 
-        public int MeasureHeight(string text, int maximumWidth, int maximumHeight, string fontFamily, Dimension fontSize) {
+        public int MeasureHeight(string text, float maximumWidth, float maximumHeight, string fontFamily, float fontSize) {
             return Measure(text, maximumWidth, maximumHeight, fontFamily, fontSize).Height;
         }
 
-        public Size Measure(string text, int maximumWidth, int maximumHeight, string fontFamily, Dimension fontSize) {
-            var textFormat = textFormatFactory.CreateTextFormat(fontFamily, fontSize.Value);
+        public Size Measure(string text, float maximumWidth, float maximumHeight, string fontFamily, float fontSize) {
+            var textFormat = textFormatFactory.CreateTextFormat(fontFamily, fontSize);
             var textLayout = textLayoutFactory.CreateTextLayout(textFormat, text, maximumWidth, maximumHeight);
 
             if (textFormat != null && textLayout != null) {
