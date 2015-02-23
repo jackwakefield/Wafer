@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Wafer.UI.Direct2D.Factories;
 using SharpDX;
 
-namespace Wafer.UI.Direct2D.Renderers {
+namespace Wafer.UI.Direct2D {
     public class ShapeRenderer : IShapeRenderer {
         private readonly IRenderTargetProvider renderTargetProvider;
         private readonly IColourFactory colourFactory;

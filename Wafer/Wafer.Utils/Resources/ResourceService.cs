@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using Wafer.Core;
 using Wafer.Core.Json;
-using Wafer.UI.Views;
 using Wafer.Utils.Config;
 using Wafer.Utils.Logging;
 using Wafer.Utils.Resources.Exceptions;
@@ -156,34 +155,6 @@ namespace Wafer.Utils.Resources {
             }
 
             throw new UnknownResourceException("Colour", key);
-        }
-
-        public View InflateView(string name) {
-            if (!name.EndsWith(FileExtension)) {
-                name += FileExtension;
-            }
-
-            var path = Path.Combine(config.Paths.Layouts, name);
-            log.Verbose(Tag, "Deflating view '{0}'", path);
-
-            var typesBinder = new MappedTypesBinder {
-                KnownTypes = ViewHelper.GetViewTypes()
-            };
-
-            var content = File.ReadAllText(path);
-
-            var view = JsonConvert.DeserializeObject<View>(content, new JsonSerializerSettings {
-                TypeNameHandling = TypeNameHandling.Objects,
-                Binder = typesBinder,
-                Converters = new JsonConverter[] {
-                    new DimensionConverter(this),
-                    new ColourConverter(this),
-                    new StringConverter(this), 
-                    new IntegerConverter(this)
-                }
-            });
-
-            return view;
         }
     }
 }

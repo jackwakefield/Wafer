@@ -8,15 +8,17 @@ using Castle.Core.Internal;
 using Wafer.UI.Direct2D.Factories;
 using Wafer.UI.Views;
 using SharpDX;
+using Wafer.Utils.Resources;
 using Direct2D1 = SharpDX.Direct2D1;
 using DirectWrite = SharpDX.DirectWrite;
 using Direct3D = SharpDX.Direct3D10;
 using DXGI = SharpDX.DXGI;
 using SharpDX.Windows;
+using SharpDX.WIC;
 
 namespace Wafer.UI.Direct2D
 {
-    public class HostWindow : Form, IHostWindow, IRenderTargetProvider, IDirectWriteFactoryProvider, IView, IContext {
+    public class HostWindow : Form, IHostWindow, IRenderTargetProvider, IDirectWriteFactoryProvider, IImagingFactoryProvider, IDeviceProvider, IView, IContext {
         public new IView Parent {
             get { return null; }
             set {
@@ -45,9 +47,19 @@ namespace Wafer.UI.Direct2D
             get { return directWriteFactory; }
         }
 
+        public ImagingFactory ImagingFactory {
+            get { return imagingFactory;  }
+        }
+
+        public Direct3D.Device1 Device {
+            get { return device; }
+        }
+
         public ITextRenderer TextRenderer { get; set; }
 
         public IShapeRenderer ShapeRenderer { get; set; }
+
+        public IImageRenderer ImageRenderer { get; set; }
 
         public IColourFactory ColourFactory { get; set; }
 
@@ -55,7 +67,11 @@ namespace Wafer.UI.Direct2D
 
         public ITextLayoutFactory TextLayoutFactory { get; set; }
 
-        private IList<IView> children;
+        public IImageLoader ImageLoader { get; set; }
+
+        public IResourceService Resources { get; set; }
+
+        private readonly IList<IView> children;
         private bool isResizing;
 
         private Direct3D.Device1 device;
@@ -65,6 +81,7 @@ namespace Wafer.UI.Direct2D
         private DirectWrite.Factory directWriteFactory;
         private Direct2D1.RenderTarget renderTarget;
         private Direct2D1.Factory factory;
+        private ImagingFactory imagingFactory;
 
         public HostWindow() {
             children = new List<IView>();
@@ -125,6 +142,7 @@ namespace Wafer.UI.Direct2D
             backBufferView = new Direct3D.RenderTargetView(device, backBuffer);
 
             factory = new Direct2D1.Factory();
+            imagingFactory = new ImagingFactory();
 
             using (var surface = backBuffer.QueryInterface<DXGI.Surface>()) {
                 renderTarget = new Direct2D1.RenderTarget(factory, surface,
@@ -133,6 +151,12 @@ namespace Wafer.UI.Direct2D
 
             renderTarget.AntialiasMode = Direct2D1.AntialiasMode.PerPrimitive;
             renderTarget.TextAntialiasMode = Direct2D1.TextAntialiasMode.Cleartype;
+
+            var imageLoader = ImageLoader as ImageLoader;
+
+            if (imageLoader != null) {
+                imageLoader.ReloadAll();
+            }
         }
 
         public void AddChild(IView view) {
@@ -181,10 +205,18 @@ namespace Wafer.UI.Direct2D
             TextLayoutFactory.DisposeItems();
             ColourFactory.DisposeItems();
 
+            var imageLoader = ImageLoader as ImageLoader;
+
+            if (imageLoader != null) {
+                imageLoader.DisposeAll();
+            }
+
             Utilities.Dispose(ref backBuffer);
             Utilities.Dispose(ref backBufferView);
             Utilities.Dispose(ref renderTarget);
-
+            Utilities.Dispose(ref factory);
+            Utilities.Dispose(ref imagingFactory);
+                
             if (swapChain != null) {
                 swapChain.ResizeBuffers(1, Width, Height, DXGI.Format.B8G8R8A8_UNorm, DXGI.SwapChainFlags.None);
                 CreateSizeDependentComponents();

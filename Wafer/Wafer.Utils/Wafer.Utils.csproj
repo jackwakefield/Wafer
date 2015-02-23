@@ -79,10 +79,6 @@
       <Project>{3802f1b7-9d19-4284-ade1-115b1e1282a8}</Project>
       <Name>Wafer.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Wafer.UI\Wafer.UI.csproj">
-      <Project>{454a610c-6b55-4b3d-a15c-97f31344fd6c}</Project>
-      <Name>Wafer.UI</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
 </Project>

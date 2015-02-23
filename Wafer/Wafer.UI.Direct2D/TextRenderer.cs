@@ -7,7 +7,7 @@ using Wafer.Core;
 using Wafer.UI.Direct2D.Factories;
 using SharpDX;
 
-namespace Wafer.UI.Direct2D.Renderers {
+namespace Wafer.UI.Direct2D {
     public class TextRenderer : ITextRenderer {
         private readonly IRenderTargetProvider renderTargetProvider;
         private readonly IColourFactory colourFactory;

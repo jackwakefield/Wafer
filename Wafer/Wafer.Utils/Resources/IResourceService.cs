@@ -1,5 +1,4 @@
 ﻿using Wafer.Core;
-using Wafer.UI.Views;
 
 namespace Wafer.Utils.Resources {
     public interface IResourceService {
@@ -14,7 +13,5 @@ namespace Wafer.Utils.Resources {
         int GetIntegerByIdentifier(string value);
 
         Colour GetColourByIdentifier(string value);
-
-        View InflateView(string name);
     }
 }

@@ -8,6 +8,12 @@
             "$type": "ClockView",
             "centerVertical": true,
             "centerHorizontal": true
+        },
+        {
+            "$type": "ImageView",
+            "imageSource": "Icons/battery_unknown_white.png",
+            "Height": "18dp"
         }
     ]
 }
+                           

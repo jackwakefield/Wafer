@@ -53,8 +53,15 @@
   <ItemGroup>
     <Compile Include="IContext.cs" />
     <Compile Include="IHostWindow.cs" />
+    <Compile Include="IImage.cs" />
+    <Compile Include="IImageLoader.cs" />
+    <Compile Include="IImageRenderer.cs" />
+    <Compile Include="ILayoutInflater.cs" />
     <Compile Include="IShapeRenderer.cs" />
     <Compile Include="ITextRenderer.cs" />
+    <Compile Include="LayoutInflater.cs" />
+    <Compile Include="UiInstaller.cs" />
+    <Compile Include="Views\ImageView.cs" />
     <Compile Include="Views\ViewHelper.cs" />
     <Compile Include="Views\ContainerView.cs" />
     <Compile Include="Views\IContainer.cs" />
@@ -68,6 +75,10 @@
     <ProjectReference Include="..\Wafer.Core\Wafer.Core.csproj">
       <Project>{3802f1b7-9d19-4284-ade1-115b1e1282a8}</Project>
       <Name>Wafer.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wafer.Utils\Wafer.Utils.csproj">
+      <Project>{40329280-ac36-482d-bbf6-a63a59eb87c6}</Project>
+      <Name>Wafer.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

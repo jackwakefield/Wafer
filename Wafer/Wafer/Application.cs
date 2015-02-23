@@ -16,12 +16,15 @@ namespace Wafer {
         private readonly ILogService log;
         private readonly IConfigService config;
         private readonly IResourceService resources;
+        private readonly ILayoutInflater layoutInflater;
 
-        public Application(IHostWindow hostWindow, ILogService log, IConfigService config, IResourceService resources) {
+        public Application(IHostWindow hostWindow, ILogService log, IConfigService config,
+                IResourceService resources, ILayoutInflater layoutInflater) {
             this.hostWindow = hostWindow;
             this.log = log;
             this.config = config;
             this.resources = resources;
+            this.layoutInflater = layoutInflater;
         }
 
         public void Run() {
@@ -37,7 +40,7 @@ namespace Wafer {
             log.Info(Tag, "Loading value resources");
             resources.LoadValues();
 
-            var statusBar = resources.InflateView("status_bar");
+            var statusBar = layoutInflater.Inflate("status_bar");
             hostWindow.AddChild(statusBar);
             hostWindow.Run();
         }
