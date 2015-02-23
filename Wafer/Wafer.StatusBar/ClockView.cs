@@ -11,10 +11,8 @@ namespace Wafer.StatusBar {
     public class ClockView : TextView {
         private const int ClockInterval = 1000;
 
-        private Timer clockTimer;
-
         public ClockView() {
-            clockTimer = new Timer(ClockInterval);
+            var clockTimer = new Timer(ClockInterval);
             clockTimer.Elapsed += (sender, args) => SetTime();
             clockTimer.Enabled = true;
 

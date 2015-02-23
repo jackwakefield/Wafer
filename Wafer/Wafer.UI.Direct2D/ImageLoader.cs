@@ -29,15 +29,20 @@ namespace Wafer.UI.Direct2D {
             if (renderTarget == null || renderTarget.IsDisposed) {
                 return null; // TODO: throw exception
             }
-
+            
             if (!File.Exists(path)) {
                 // TODO: improve absolute/relative path handling
                 path = Path.Combine(config.Paths.Resources, path);
             }
     
-            var bitmap = CreateBitmap(path);
-            var image = new Image(bitmap);
+            Image image;
 
+            if (images.TryGetValue(path, out image)) {
+                return image;
+            }
+
+            var bitmap = CreateBitmap(path);
+            image = new Image(bitmap);
             images.Add(path, image);
 
             return image;
@@ -56,7 +61,7 @@ namespace Wafer.UI.Direct2D {
             var frame = bitmapDecoder.GetFrame(0);
             
             var converter = new FormatConverter(imagingFactory);
-            converter.Initialize(frame, SharpDX.WIC.PixelFormat.Format32bppPRGBA);
+            converter.Initialize(frame, PixelFormat.Format32bppPRGBA);
 
             var bitmap = Bitmap.FromWicBitmap(renderTarget, converter);
 

@@ -10,9 +10,8 @@
             "centerHorizontal": true
         },
         {
-            "$type": "ImageView",
-            "imageSource": "Icons/battery_unknown_white.png",
-            "Height": "16dp",
+            "$type": "BatteryImageView",
+            "Height": "18dp",
             "centerVertical": true
         }
     ]
